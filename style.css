@@ -1,0 +1,56 @@
+body {
+    background-color: #cbc5b9;
+    color: #201c1d; 
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+div {
+    width: 400px;
+    margin: 50px auto 0 auto;
+    padding: 10px 100px 100px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: white;
+}
+
+a {
+    margin-left: 20px;
+    color: #e6332f;
+}
+
+a:hover {
+    color: #e7a93a;
+}
+
+h1 {
+    color: #e6332f;
+    font-family: Cambria, Cochin, Georgia, Times, Times New Roman, serif;
+}
+
+h3 {
+    margin-left: 20px;
+}
+
+table {
+    margin: 0 auto 0 0;
+}
+
+table th, table td {
+    padding: 5px 15px 5px 5px;
+
+    vertical-align: top;
+}
+
+table th {
+    text-align: left;
+    vertical-align: bottom;
+}
+
+/* Clearfix solution from http://stackoverflow.com/questions/8554043/what-is-clearfix */
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}

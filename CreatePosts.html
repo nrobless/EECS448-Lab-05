@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>EECS448 Message Board - Create Post</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <div>
+            <form action="CreatePosts.php" method="post" id="postform">
+                <h1>EECS448 Message Board</h1>
+                <h2>Create Post</h2>
+                <table>
+                    <tr>
+                        <td>User ID: </td>
+                        <td><input type="text" name="user"></td>
+                    </tr>
+                    <tr>
+                        <td>Post Text: </td>
+                        <td><textarea name="post-text" form="postform" rows="5" cols="35"></textarea></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Create Post"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

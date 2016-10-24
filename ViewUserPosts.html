@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>EECS448 Message Board - View User Posts</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <div>
+            <form action="ViewUserPosts.php" method="post" id="postform">
+                <h1>EECS448 Message Board</h1>
+                <h2>View User Posts</h2>
+                <table>
+                    <tr>
+                        <td>Select User: </td>
+                        <td>
+                            <select name="user" required>
+                                <?php
+                                    // Debug
+                                    error_reporting(E_ALL);
+                                    ini_set('display_errors', 1);
+                                    
+                                    // Initialize variables.
+                                    $mysqli = new mysqli('mysql.eecs.ku.edu', 'nrobless', 'Password123!', 'nrobless');
+
+                                    // Check connection.
+                                    if ( $mysqli->connect_errno ) {
+                                        echo '<strong style="color:red">Connect Failed:</strong>' . $mysqli->connect_error . '</div>';
+                                        exit();
+                                    }
+
+                                    // Print user_id's to options.
+                                    $query = 'SELECT user_id FROM Users';
+                                    if ( $result = $mysqli->query($query) ) {
+                                        // Fetch associative array.
+                                        while ( $row = $result->fetch_assoc() ) {
+                                            echo '<option>' . $row['user_id'] . '</option>';
+                                        }
+                                        // Free result set.
+                                        $result->free();
+                                    }
+                                ?>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="View User Posts"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

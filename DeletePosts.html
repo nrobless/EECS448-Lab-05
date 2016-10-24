@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>EECS448 Message Board - Delete Posts</title>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+
+    <body>
+        <div>
+            <form action="DeletePosts.php" method="post" id="postform">
+                <h1>EECS448 Message Board</h1>
+                <h2>Delete Posts</h2>
+                <table>
+                    <tr><th>User ID</th><th>Post</th><th>Delete?</th></tr>
+                    <?php
+                        // Debug
+                        error_reporting(E_ALL);
+                        ini_set('display_errors', 1);
+                        
+                        // Initialize variables.
+                        $mysqli = new mysqli('mysql.eecs.ku.edu', 'nrobless', 'Password123!', 'nrobless');
+
+                        // Check connection.
+                        if ( $mysqli->connect_errno ) {
+                            echo '<strong style="color:red">Connect Failed:</strong>' . $mysqli->connect_error . '</div>';
+                            exit();
+                        }
+
+                        // Print authors, posts, and delete checkboxes.
+                        $query = 'SELECT post_id, author_id, content FROM Posts';
+                        if ( $result = $mysqli->query($query) ) {
+                            // Fetch associative array.
+                            while ( $row = $result->fetch_assoc() ) {
+                                echo '<tr><td>' . $row['author_id'] . '</td>';
+                                echo '<td>' . $row['content'] . '</td>';
+                                echo '<td><input type="checkbox" name="delete[]" value="' . $row['post_id'] . '"></td></tr>';
+                            }
+                            // Free result set.
+                            $result->free();
+                        }
+                    ?>
+                    <tr>
+                        <td colspan="3"><input type="submit" value="Delete Posts"></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
